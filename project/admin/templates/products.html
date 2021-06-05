@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Users
+{% endblock %}
+
+
+{% block body %}
+    {% include 'header.html' %}
+    <!-- Breadcomb area Start-->
+	<div class="breadcomb-area">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="breadcomb-list">
+						<div class="row">
+							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+								<div class="breadcomb-wp">
+									<div class="breadcomb-icon">
+										<i class="notika-icon notika-windows"></i>
+									</div>
+									<div class="breadcomb-ctn">
+										<h2>Products Data</h2>
+										<a href="{{ url_for('admin.products_add') }}">Add</a> ||
+                                        <a href="{{ url_for('admin.products_delete') }}">Delete</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Breadcomb area End-->
+
+    <!-- Data Table area Start-->
+    <div class="data-table-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="data-table-list">
+                        <div class="table-responsive">
+                            <table id="data-table-basic" class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Description</th>
+                                        <th>Stock</th>
+                                        <th>url</th>
+                                        <th>Image</th>
+                                        <th>Price</th>
+                                        <th>Category</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for data in products %}
+                                    <tr class="odd gradeX">
+                                        <td>{{ data.title }}</td>
+                                        <td>{{ data.description }}</td>
+                                        <td>{{ data.stock }}</td>
+                                        <td>{{ data.url }}</td>
+                                        <td>{{ data.image }}</td>
+                                        <td>{{ data.price }}</td>
+                                        <td>{{ data.category }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Data Table area End-->
+    {% include 'footer.html' %}
+{% endblock %}
